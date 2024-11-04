@@ -1,4 +1,4 @@
-﻿using LinqToDB;
+using LinqToDB;
 using LinqToDB.Data;
 using System.Data;
 using Vec.CalculationEngine.Data;
@@ -308,7 +308,7 @@ public class DComputerCount : IComputerCountDataContext
 
 		return returndistributions;
 	}
-    
+
 	public List<MBallotPaper> LoadBallotPapersWithFrequency(Guid electionElectorateVacancyId)
 	{
 		var uniquePaperPatternsWithFrequency = _ballotPaperFetcher.GetBallotPapers(electionElectorateVacancyId);
@@ -399,7 +399,7 @@ public class DComputerCount : IComputerCountDataContext
 											 (atlDataEntryType == ATLDataEntryType.Adjusted)
 									)
 									select new { GroupId = bt.GroupId, Total = bt.Total })
-									.ToArray() 
+									.ToArray()
 									.GroupBy(bt => bt.GroupId)
 									.Select(g => new { GroupId = g.Key, GetGroupATLTotalVotes = (int)((decimal?)g.Sum(ticket => ticket.Total) ?? 0) })
 									.ToDictionary(x => x.GroupId, x => x.GetGroupATLTotalVotes);
@@ -444,7 +444,7 @@ public class DComputerCount : IComputerCountDataContext
 											 (informalDataEntryType == InformalDataEntryType.Adjusted)
 									)
 									select new { BallotBoxId = bbi.BallotBoxId, Total = bbi.Total })
-									.ToArray() 
+									.ToArray()
 									.GroupBy(x => x.BallotBoxId)
 									.ToDictionary(k => k.Key, v => v.Sum(x => x.Total));
 		
@@ -670,7 +670,7 @@ public class DComputerCount : IComputerCountDataContext
 				_database.CountParameter
 										.Where(x => ids.Contains(x.ElectionElectorateVacancyId))
 										.Where(x => x.Name == countParameterName)
-										.ToArray() 
+										.ToArray()
 										.Where(x => value.Equals(x.Value, StringComparison.OrdinalIgnoreCase))
 										.ToArray();
 		

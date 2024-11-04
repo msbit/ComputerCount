@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Vec.Common.Entities;
@@ -238,7 +238,7 @@ namespace Vec.Calculation.BL.Workflow
                 switch (this.ProcessState)
                 {
                     case ProcessStates.CheckCalculateState:
-                       
+
                         if (ContinuingCandidates.Count != 1 || VacanciesToFill != 1)
                         {
                             this.SaveData();
@@ -253,7 +253,7 @@ namespace Vec.Calculation.BL.Workflow
                                 {
                                     this.ProcessState = ProcessStates.ExcludeCandidate;
                                 }
-                             
+
                                 else if (this.ElectionCategory == ElectionCategory.Parliamentary &&
                                     this.Excluded.Count == this.ContinuingCandidates.Count && this.ContinuingCandidates.Count == 2)
                                 {
@@ -343,7 +343,7 @@ namespace Vec.Calculation.BL.Workflow
                 switch (this.ProcessState)
                 {
                     case ProcessStates.CheckCalculateState:
-                       
+
                         if (ContinuingCandidates.Count != 1 || VacanciesToFill != 1)
                         {
                             this.SaveData();

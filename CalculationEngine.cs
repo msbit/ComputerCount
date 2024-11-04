@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Vec.Calculation.BL.Workflow;
 using Vec.CalculationEngine.DAL;

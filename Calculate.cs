@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +12,7 @@ using Vec.ComputerCount.DALReporting;
 
 namespace Vec.ComputerCount.BL
 {
-    public class DistributionBL: MDistribution 
+    public class DistributionBL: MDistribution
     {
         public List<BallotPaperBL> BallotPapers { get; set; }
     }
@@ -31,7 +31,7 @@ namespace Vec.ComputerCount.BL
 		public CalculationMethod CalculationMethod { get; set; }
 		public int InformalPapersTotal { get; set; }
 		public List<MCandidate> Candidates { get; set; }
-		public List<MCandidate> InitialExcludedCandidates { get; set; } 
+		public List<MCandidate> InitialExcludedCandidates { get; set; }
 		public List<MCandidate> ExcludedCandidates { get; set; }
 		public List<MCandidate> ElectedCandidates { get; set; }
 		public List<MDistribution> Distributions { get; set; }
@@ -146,7 +146,7 @@ namespace Vec.ComputerCount.BL
 				return GetMostRecentTransfer().CycleNo;
 			}
 		}
-        
+
 		public virtual MCandidate GetCandidate(int Position)
 		{
 			return Candidates.Where(c => c.Position == Position).First();
@@ -202,7 +202,7 @@ namespace Vec.ComputerCount.BL
 							&& bl.WeightedTransferValue == transferValue
 							select bl).ToList();
 		}
-        
+
 		public virtual int GetCandidateBallotPaperTotal(MCandidate candidate, List<BallotPaperBL> workingBallotPapers)
 		{
 			return (from bps in workingBallotPapers
@@ -244,7 +244,7 @@ namespace Vec.ComputerCount.BL
 							orderby c.Position ascending
 							select GetCandidateVotes(c, workingBallotPapers)).ToList();
 
-		}        
+		}
 	
 		protected virtual MTransfer GetMostRecentTransfer()
 		{
@@ -636,7 +636,7 @@ namespace Vec.ComputerCount.BL
 
 			return transferVotes;
 		}
-        
+
 		public virtual void QueueDistributionOf1stPreferences()
 		{
 			AddDistributionToQueue(DistributionType.Initial, null, BallotPapers);
@@ -945,7 +945,7 @@ namespace Vec.ComputerCount.BL
 
     public class CalculateBL : Calculate
     {
-        protected string _ConnectionString;              
+        protected string _ConnectionString;
 
         public CalculateBL(IComputerCountDataContext dataContext, IReportingDAL reporting, Guid ElectionElectorateVacancyId)
           : base(dataContext, reporting, ElectionElectorateVacancyId)
@@ -973,7 +973,7 @@ namespace Vec.ComputerCount.BL
             Candidates = new List<MCandidate>();
             Distributions = new List<MDistribution>();
             DistributionQueue = new List<DistributionBL>();
-        }       
+        }
 
     }
 
@@ -1041,7 +1041,7 @@ namespace Vec.ComputerCount.BL
             }
 
         }
-        
+
         public int GetNextPreferencePosition(List<MCandidate> electedCandidates, List<MCandidate> ExcludedCandidates)
         {
             var excluded = new List<MCandidate>();
@@ -1056,7 +1056,7 @@ namespace Vec.ComputerCount.BL
 
             return GetPreferencePosition(excluded);
         }
-       
+
         public int CurrentPreferencePosition(List<MCandidate> electedCandidates, List<MCandidate> ExcludedCandidates)
         {
             var excluded = new List<MCandidate>();
